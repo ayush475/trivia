@@ -12,18 +12,18 @@ const Homepage = () => {
   };
   return (
     <div className="container mx-auto mt-4">
-      <h1>hello this is homepage which i made just for fun</h1>
+      <h1 className="text-4xl text-center">TRIVIA APP HOMEPAGE</h1>
     
-    <form onSubmit={handleSubmit} className="mt-4">
+    <form onSubmit={handleSubmit} className="mt-4 text-center justify-center">
       <input
         type="text"
-        placeholder="Enter your name"
+        placeholder=" Please Enter your name"
         value={name}
         onChange={(event) => setName(event.target.value)}
-        className="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring-indigo-300 focus:ring-offset-2 focus:outline-none py-2 px-4"
+        className="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring-indigo-300 focus:ring-offset-2 focus:outline-none py-2 px-4 text-xl"
       />
 
-      <button type="submit" className="mt-4 text-white bg-indigo-500 rounded-md shadow-sm py-2 px-4">Submit</button>
+      <button type="submit" className="mt-4 text-white bg-indigo-500 rounded-md shadow-sm py-2 px-4 text-xl">Submit</button>
     </form>
   </div>
   )

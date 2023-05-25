@@ -71,15 +71,26 @@ const Trivia = () => {
     };
   }, []);
 
+  // const handleOptionClick = (optionIndex) => {
+  //   if (selectedOption === null) {
+  //     setSelectedOption(optionIndex);
+  //     const currentQuestion = questions[currentQuestionIndex];
+  //     if (currentQuestion.answer === optionIndex) {
+  //       setScore(score + 1);
+  //     }
+  //   }
+  // };
   const handleOptionClick = (optionIndex) => {
-    if (selectedOption === null) {
-      setSelectedOption(optionIndex);
-      const currentQuestion = questions[currentQuestionIndex];
-      if (currentQuestion.answer === optionIndex) {
-        setScore(score + 1);
-      }
+    setSelectedOption(optionIndex);
+    const currentQuestion = questions[currentQuestionIndex];
+    if (currentQuestion.answer === optionIndex) {
+      setScore(score + 1);
     }
   };
+  
+
+  
+  
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
@@ -100,33 +111,42 @@ const Trivia = () => {
 
   return (
     <div>
-      <h1 className="text-4xl">Trivia Questions for {name}</h1>
-      {questions.length > 0 && !quizCompleted ? (
-        <div>
-          <h2>{questions[currentQuestionIndex].question}</h2>
-          <ul>
-            {questions[currentQuestionIndex].options.map((option, index) => (
-              <li
-                key={index}
-                className={selectedOption === index ? "selected" : ""}
-                onClick={() => handleOptionClick(index)}
-              >
-                {option}
-              </li>
-            ))}
-          </ul>
-          {selectedOption !== null && (
-            <button onClick={handleNextQuestion}>Next Question</button>
-          )}
-          <p>Time taken: {time} seconds</p>
+     <h1 className="text-4xl text-center">Trivia Questions for {name}</h1>
+{questions.length > 0 && !quizCompleted ? (
+  <div className="w-full max-w-md mx-auto mt-10">
+    <h2 className="mb-4">
+      {questions[currentQuestionIndex].question}
+    </h2>
+    <ul className="list-disc list-inside">
+      {questions[currentQuestionIndex].options.map((option, index) => (
+        <li
+          key={index}
+          className={[
+            selectedOption === index ? "selected" : "",
+            "py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 transition ease-in-out duration-500",
+          ]}
+          onClick={() => handleOptionClick(index)}
+        >
+          {option}
+        </li>
+      ))}
+    </ul>
+    {selectedOption !== null && (
+      <button className="mt-6 text-gray-900 font-bold bg-white hover:bg-gray-100 py-2 px-4 rounded  cu" onClick={handleNextQuestion}>
+        Next Question
+      </button>
+    )}
+    <p className="mt-4 text-gray-500">Time taken: {time} seconds</p>
         </div>
       ) : (
-        <div>
-          <h2>Quiz Completed!</h2>
-          <p>Your score: {score}</p>
-          <p>Total time taken: {totalTime} seconds</p>
-          <p onClick={handleSubmit}>Let's see the report card</p>
-        </div>
+        <div className="w-full max-w-md mx-auto mt-10">
+        <h2 className="text-center text-gray-500">Quiz Completed!</h2>
+        <p className="text-gray-500">Your score: {score}</p>
+        <p className="text-gray-500">Total time taken: {totalTime} seconds</p>
+        <button className="mt-6 text-gray-900 font-bold bg-white hover:bg-gray-100 py-2 px-4 rounded cursor-pointer" onClick={handleSubmit}>
+          Let's see the report card
+        </button>
+      </div>
       )}
     </div>
   );
