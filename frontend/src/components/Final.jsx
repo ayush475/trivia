@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, useLocation, Link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  useLocation,
+  Link,
+} from "react-router-dom";
 
 const Final = () => {
   const [name, setName] = useState("");
@@ -20,7 +25,9 @@ const Final = () => {
 
   const fetchTopParticipants = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/results/results/top");
+      const response = await fetch(
+        "http://localhost:4000/api/results/results/top"
+      );
       if (response.ok) {
         const data = await response.json();
         setTopParticipants(data);
@@ -34,59 +41,49 @@ const Final = () => {
 
   return (
     <div className="w-full max-w-md mx-auto mt-10">
-     <h1 className="text-4xl text-center">Final Report Card</h1>
-  <table className="mt-6 w-full border border-solid border-gray-500">
-    <tbody>
-      <tr>
-        <td className="py-2 px-4 border-b border-solid border-gray-500">Name:</td>
-        <td className="py-2 px-4 border-b border-solid border-gray-500">{name}</td>
-      </tr>
-      <tr>
-        <td className="py-2 px-4 border-b border-solid border-gray-500">Score:</td>
-        <td className="py-2 px-4 border-b border-solid border-gray-500">{score}</td>
-      </tr>
-      <tr>
-        <td className="py-2 px-4 border-b border-solid border-gray-500">Total time:</td>
-        <td className="py-2 px-4 border-b border-solid border-gray-500">{time}</td>
-      </tr>
-    </tbody>
-  </table>
+      <h1 className="text-4xl text-center">Final Report Card</h1>
+      <div className="mt-6 w-full border border-solid border-gray-500">
+        <div className="flex bg-gray-100 border-b border-solid border-gray-500">
+          <div className="py-2 px-4 w-1/2 font-bold">Name:</div>
+          <div className="py-2 px-4 w-1/2">{name}</div>
+        </div>
+        <div className="flex border-b border-solid border-gray-500">
+          <div className="py-2 px-4 w-1/2 font-bold">Score:</div>
+          <div className="py-2 px-4 w-1/2">{score}</div>
+        </div>
+        <div className="flex bg-gray-100 border-b border-solid border-gray-500">
+          <div className="py-2 px-4 w-1/2 font-bold">Total time:</div>
+          <div className="py-2 px-4 w-1/2">{time}</div>
+        </div>
+      </div>
 
-
-      {/* <h2 className="mb-4 text-center">Top <span>5</span> Participants:</h2>
+      <h2 className="mb-4 text-center text-2xl py-4 text-yellow-500">
+        Top <span className="text-3xl text-blue-800">5</span> Participants:
+      </h2>
       <div className="grid grid-cols-3 gap-4">
-        {topParticipants.map((participant) => (
-          <li key={participant._id } className="">
+        {topParticipants.slice(0, 5).map((participant) => (
+          <div
+            key={participant._id}
+            className="border rounded-3xl border-solid border-gray-500 p-4 hover:bg-gray-100 transition duration-300"
+          >
             <strong className="text-gray-900 font-bold">
-              <span className="underline">UserName</span>:{participant.participant}
+              <span className="underline">Name</span>:{" "}
+              {participant.participant}
             </strong>
             <span className="text-gray-500">
-              <h1>score:{participant.score}</h1>
-              <h1>Time:{participant.totalTime}sec</h1>
-              
+              <h1>Score: {participant.score}</h1>
+              <h1>Time: {participant.totalTime} sec</h1>
             </span>
-          </li>
+          </div>
         ))}
-      </div> */}
-      <h2 className="mb-4 text-center text-4xl py-4 text-yellow-500">Top <span>5</span> Participants:</h2>
-<div className="grid grid-cols-3 gap-4">
-  {topParticipants.slice(0, 5).map((participant) => (
-    <div key={participant._id} className="border border-solid border-gray-500 p-4 hover:bg-gray-100 transition duration-300">
-      <strong className="text-gray-900 font-bold">
-        <span className="underline">UserName</span>: {participant.participant}
-      </strong>
-      <span className="text-gray-500">
-        <h1>Score: {participant.score}</h1>
-        <h1>Time: {participant.totalTime} sec</h1>
+      </div>
+
+      <span className="pt-4 mt-9 text-xl font-semibold text-center">
+        Return to Homepage?{" "}
+        <Link to="/" className="text-blue-500 hover:underline">
+          here
+        </Link>
       </span>
-    </div>
-  ))}
-</div>
-
-<span className="pt-4 mt-9 text-xl font-semibold text-center">
-  Return to Homepage? <Link to="/" className="text-blue-500 hover:underline">here</Link>
-</span>
-
     </div>
   );
 };
