@@ -89,9 +89,6 @@ const Trivia = () => {
   };
   
 
-  
-  
-
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
