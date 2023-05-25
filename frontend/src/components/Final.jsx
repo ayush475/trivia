@@ -83,7 +83,10 @@ const Final = () => {
   ))}
 </div>
 
-      <span className="pt-4 mt-9 text-xl font-semibold text-align-center">Return to Homepage? <Link to='/'>here</Link> </span>
+<span className="pt-4 mt-9 text-xl font-semibold text-center">
+  Return to Homepage? <Link to="/" className="text-blue-500 hover:underline">here</Link>
+</span>
+
     </div>
   );
 };

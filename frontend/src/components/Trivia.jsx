@@ -71,15 +71,7 @@ const Trivia = () => {
     };
   }, []);
 
-  // const handleOptionClick = (optionIndex) => {
-  //   if (selectedOption === null) {
-  //     setSelectedOption(optionIndex);
-  //     const currentQuestion = questions[currentQuestionIndex];
-  //     if (currentQuestion.answer === optionIndex) {
-  //       setScore(score + 1);
-  //     }
-  //   }
-  // };
+ 
   const handleOptionClick = (optionIndex) => {
     setSelectedOption(optionIndex);
     const currentQuestion = questions[currentQuestionIndex];
@@ -108,50 +100,59 @@ const Trivia = () => {
 
   return (
     <div className="relative">
-    <h1 className="text-4xl text-center">Trivia Questions for {name}</h1>
+    <h1 className="text-2xl lg:text-4xl text-center font-bold mt-10">Trivia Questions for<span className="text-2xl lg:text-4xl px-1 underline text-blue">{name}</span></h1>
+  
     {questions.length > 0 && !quizCompleted ? (
       <div className="w-full max-w-md mx-auto mt-10">
-        <h2 className="mb-4">
+        <h2 className="text-lg lg:text-xl mb-4">
           {questions[currentQuestionIndex].question}
         </h2>
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {questions[currentQuestionIndex].options.map((option, index) => (
             <div
-              key={index}
-              className={[
-                "py-2 border-b border-gray-200 cursor-pointer hover:bg-blue-200 transition ease-in-out duration-500",
-                selectedOption === index ? "selected bg-blue-500" : "",
-              ].join(" ")}
-              onClick={() => handleOptionClick(index)}
-            >
-              {option}
-            </div>
-        
-      ))}
-        </div>
-    {selectedOption !== null && (
-     <button className="mt-6 text-gray-900 font-bold bg-white hover:bg-blue-400 py-2 px-4 rounded border border-solid border-gray-500" onClick={handleNextQuestion}>
-     Next Question
-   </button>
-   
-    )}
-    <p className="mt-4 text-gray-500 absolute top-0 right-0 border border-solid border-blue-500 px-4 py-2">
-  Timer: {time} seconds
-</p>
+  key={index}
+  className={[
+    "py-2 border-b border-solid border-blue-500 cursor-pointer hover:bg-blue-200 transition ease-in-out duration-500",
+    selectedOption === index ? "selected bg-blue-500" : "",
+  ].join(" ")}
+  onClick={() => handleOptionClick(index)}
+>
+  {option}
+</div>
 
+          ))}
         </div>
-      ) : (
-        <div className="w-full max-w-md mx-auto mt-10">
-        <h2 className="text-center text-gray-500">Quiz Completed!</h2>
-        <p className="text-gray-500">Your score: {score}</p>
-        <p className="text-gray-500">Total time taken: {totalTime} seconds</p>
-        <button className="mt-6 text-gray-900 font-bold bg-white hover:bg-gray-100 py-2 px-4 rounded cursor-pointer border border-solid border-red-500" onClick={handleSubmit}>
-  Let's see the report card
-</button>
+        {selectedOption !== null && (
+  <button className="mt-6 text-gray-900 font-bold bg-white hover:bg-blue-400 py-2 px-4 rounded border border-solid border-gray-500" onClick={handleNextQuestion}>
+    Next Question
+  </button>
+)}
+<div className="mt-2 px-0">
+  <p className="w-1/2 border-blue-500 border-double border-4 px-4 py-2 rounded-lg hover:bg-blue-300">
+    Timer: {time} seconds
+  </p>
+</div>
+
+
+
+
 
       </div>
-      )}
- </div>
+    ) : (
+      <div className="w-full max-w-md mx-auto mt-10 bg-gray-300 p-6 rounded-lg">
+      <h2 className="text-center text-gray-500 text-2xl mb-4">Quiz Completed!</h2>
+      <p className="text-gray-600 text-lg mb-2">Your score: <span className="text-black text-2xl">{score}</span> </p>
+      <p className="text-gray-600 text-lg mb-4">Total time taken: <span className="text-black text-2xl">{totalTime} </span> seconds</p>
+      <button className="mt-6  text-gray-900 font-bold bg-white hover:bg-gray-200 py-2 px-4 rounded cursor-pointer border border-solid border-red-500">
+        Let's see the report card
+      </button>
+    </div>
+    
+    
+
+    )}
+  </div>
+  
   );
 };
 
