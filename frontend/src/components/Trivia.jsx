@@ -143,7 +143,7 @@ const Trivia = () => {
       <h2 className="text-center text-gray-500 text-2xl mb-4">Quiz Completed!</h2>
       <p className="text-gray-600 text-lg mb-2">Your score: <span className="text-black text-2xl">{score}</span> </p>
       <p className="text-gray-600 text-lg mb-4">Total time taken: <span className="text-black text-2xl">{totalTime} </span> seconds</p>
-      <button className="mt-6  text-gray-900 font-bold bg-white hover:bg-gray-200 py-2 px-4 rounded cursor-pointer border border-solid border-red-500">
+      <button className="mt-6  text-gray-900 font-bold bg-white hover:bg-gray-200 py-2 px-4 rounded cursor-pointer border border-solid border-red-500" onClick={handleSubmit}>
         Let's see the report card
       </button>
     </div>
