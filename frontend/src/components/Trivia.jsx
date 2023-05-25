@@ -107,45 +107,51 @@ const Trivia = () => {
   }, [quizCompleted]);
 
   return (
-    <div>
-     <h1 className="text-4xl text-center">Trivia Questions for {name}</h1>
-{questions.length > 0 && !quizCompleted ? (
-  <div className="w-full max-w-md mx-auto mt-10">
-    <h2 className="mb-4">
-      {questions[currentQuestionIndex].question}
-    </h2>
-    <ul className="list-disc list-inside">
-      {questions[currentQuestionIndex].options.map((option, index) => (
-        <li
-          key={index}
-          className={[
-            selectedOption === index ? "selected" : "",
-            "py-2 border-b border-gray-200 cursor-pointer hover:bg-gray-100 transition ease-in-out duration-500",
-          ]}
-          onClick={() => handleOptionClick(index)}
-        >
-          {option}
-        </li>
+    <div className="relative">
+    <h1 className="text-4xl text-center">Trivia Questions for {name}</h1>
+    {questions.length > 0 && !quizCompleted ? (
+      <div className="w-full max-w-md mx-auto mt-10">
+        <h2 className="mb-4">
+          {questions[currentQuestionIndex].question}
+        </h2>
+        <div className="grid grid-cols-2 gap-4">
+          {questions[currentQuestionIndex].options.map((option, index) => (
+            <div
+              key={index}
+              className={[
+                "py-2 border-b border-gray-200 cursor-pointer hover:bg-blue-200 transition ease-in-out duration-500",
+                selectedOption === index ? "selected bg-blue-500" : "",
+              ].join(" ")}
+              onClick={() => handleOptionClick(index)}
+            >
+              {option}
+            </div>
+        
       ))}
-    </ul>
+        </div>
     {selectedOption !== null && (
-      <button className="mt-6 text-gray-900 font-bold bg-white hover:bg-gray-100 py-2 px-4 rounded  cu" onClick={handleNextQuestion}>
-        Next Question
-      </button>
+     <button className="mt-6 text-gray-900 font-bold bg-white hover:bg-blue-400 py-2 px-4 rounded border border-solid border-gray-500" onClick={handleNextQuestion}>
+     Next Question
+   </button>
+   
     )}
-    <p className="mt-4 text-gray-500">Time taken: {time} seconds</p>
+    <p className="mt-4 text-gray-500 absolute top-0 right-0 border border-solid border-blue-500 px-4 py-2">
+  Timer: {time} seconds
+</p>
+
         </div>
       ) : (
         <div className="w-full max-w-md mx-auto mt-10">
         <h2 className="text-center text-gray-500">Quiz Completed!</h2>
         <p className="text-gray-500">Your score: {score}</p>
         <p className="text-gray-500">Total time taken: {totalTime} seconds</p>
-        <button className="mt-6 text-gray-900 font-bold bg-white hover:bg-gray-100 py-2 px-4 rounded cursor-pointer" onClick={handleSubmit}>
-          Let's see the report card
-        </button>
+        <button className="mt-6 text-gray-900 font-bold bg-white hover:bg-gray-100 py-2 px-4 rounded cursor-pointer border border-solid border-red-500" onClick={handleSubmit}>
+  Let's see the report card
+</button>
+
       </div>
       )}
-    </div>
+ </div>
   );
 };
 

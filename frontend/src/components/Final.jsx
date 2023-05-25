@@ -34,13 +34,27 @@ const Final = () => {
 
   return (
     <div className="w-full max-w-md mx-auto mt-10">
-      <h1 className="text-4xl text-center">Final Report Card</h1>
-      <h2 className="mb-4">Name: {name}</h2>
-      <h2 className="mb-4">Score: {score}</h2>
-      <h2 className="mb-4">Total time: {time}</h2>
+     <h1 className="text-4xl text-center">Final Report Card</h1>
+  <table className="mt-6 w-full border border-solid border-gray-500">
+    <tbody>
+      <tr>
+        <td className="py-2 px-4 border-b border-solid border-gray-500">Name:</td>
+        <td className="py-2 px-4 border-b border-solid border-gray-500">{name}</td>
+      </tr>
+      <tr>
+        <td className="py-2 px-4 border-b border-solid border-gray-500">Score:</td>
+        <td className="py-2 px-4 border-b border-solid border-gray-500">{score}</td>
+      </tr>
+      <tr>
+        <td className="py-2 px-4 border-b border-solid border-gray-500">Total time:</td>
+        <td className="py-2 px-4 border-b border-solid border-gray-500">{time}</td>
+      </tr>
+    </tbody>
+  </table>
 
-      <h2 className="mb-4 text-center">Top <span>5</span> Participants:</h2>
-      <ul className="flex-row">
+
+      {/* <h2 className="mb-4 text-center">Top <span>5</span> Participants:</h2>
+      <div className="grid grid-cols-3 gap-4">
         {topParticipants.map((participant) => (
           <li key={participant._id } className="">
             <strong className="text-gray-900 font-bold">
@@ -53,7 +67,22 @@ const Final = () => {
             </span>
           </li>
         ))}
-      </ul>
+      </div> */}
+      <h2 className="mb-4 text-center text-4xl py-4 text-yellow-500">Top <span>5</span> Participants:</h2>
+<div className="grid grid-cols-3 gap-4">
+  {topParticipants.slice(0, 5).map((participant) => (
+    <div key={participant._id} className="border border-solid border-gray-500 p-4 hover:bg-gray-100 transition duration-300">
+      <strong className="text-gray-900 font-bold">
+        <span className="underline">UserName</span>: {participant.participant}
+      </strong>
+      <span className="text-gray-500">
+        <h1>Score: {participant.score}</h1>
+        <h1>Time: {participant.totalTime} sec</h1>
+      </span>
+    </div>
+  ))}
+</div>
+
       <span className="pt-4 mt-9 text-xl font-semibold text-align-center">Return to Homepage? <Link to='/'>here</Link> </span>
     </div>
   );
