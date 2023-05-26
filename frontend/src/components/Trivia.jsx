@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
+
 const Trivia = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -12,6 +13,8 @@ const Trivia = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const name = searchParams.get("name");
+  // this is to scale easily
+
   
 
   const handleSubmit = async (event) => {
@@ -28,7 +31,7 @@ const Trivia = () => {
     };
   
     try {
-      const response = await fetch("http://localhost:4000/api/results/results", {
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URI}/api/results/results`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -51,7 +54,7 @@ const Trivia = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch("http://localhost:4000/api/questions/questions");
+        const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URI}/api/questions/questions`);
         const data = await response.json();
         setQuestions(data);
       } catch (error) {

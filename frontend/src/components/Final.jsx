@@ -26,7 +26,7 @@ const Final = () => {
   const fetchTopParticipants = async () => {
     try {
       const response = await fetch(
-        "http://localhost:4000/api/results/results/top"
+        `${import.meta.env.VITE_REACT_APP_API_URI}/api/results/results/top`
       );
       if (response.ok) {
         const data = await response.json();
