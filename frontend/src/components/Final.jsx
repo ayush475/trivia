@@ -40,9 +40,9 @@ const Final = () => {
   };
 
   return (
-    <div className="   bg-gradient-to-b from-blue-100 to-blue-500" >
+    <div className="   " >
 
-    <div className="w-full max-w-md mx-auto mt-10">
+    <div className="w-full max-w-md mx-auto mt-0 ">
       <h1 className="text-4xl text-center">Final Report Card</h1>
       <div className="mt-6 w-full border border-solid border-gray-500">
         <div className="flex bg-gray-100 border-b border-solid border-gray-500">
@@ -80,7 +80,7 @@ const Final = () => {
         ))}
       </div>
 
-      <span className="pt-4 mt-9 text-xl font-semibold text-center">
+      <span className="pt-4 mt-20  text-xl font-semibold text-center">
         Return to Homepage?{" "}
         <Link to="/" className="text-blue-500 hover:underline">
           here
