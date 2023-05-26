@@ -40,6 +40,8 @@ const Final = () => {
   };
 
   return (
+    <div className="   bg-gradient-to-b from-blue-100 to-blue-500" >
+
     <div className="w-full max-w-md mx-auto mt-10">
       <h1 className="text-4xl text-center">Final Report Card</h1>
       <div className="mt-6 w-full border border-solid border-gray-500">
@@ -84,6 +86,7 @@ const Final = () => {
           here
         </Link>
       </span>
+    </div>
     </div>
   );
 };

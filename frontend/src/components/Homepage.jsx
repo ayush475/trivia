@@ -12,7 +12,9 @@ const Homepage = () => {
   };
 
   return (
-    <div className="container mx-auto mt-10 py-11">
+    <div>
+    <div className="  bg-gradient-to-b from-yellow-100 to-yellow-500" >
+    <div className="container  mx-auto mt-0  py-11  " >
       <h1 className="text-4xl text-center">TRIVIA APP HOMEPAGE</h1>
 
       <form onSubmit={handleSubmit} className="mt-4 text-center justify-center">
@@ -45,18 +47,18 @@ const Homepage = () => {
         </div>
         <div className="w-full lg:w-1/3">
           <h2 className="text-2xl font-bold">Rules</h2>
-          <ul className="list-disc pl-6 mt-4 justify-center">
-            <li className="mb-2">
+          <ul className="list-disc pl-6 mt-4 mb-5 justify-center">
+            <li className="mb-4">
               The <span className="text-red-600 underline">name</span> is required to start the Trivia.
             </li>
-            <li className="mb-2">
+            <li className="mb-4">
               The participant needs to <span className="text-red-600 underline">select an answer before proceeding</span>  to the next question.
             </li>
-            <li className="mb-2">Each <span className="text-red-600 underline">correct</span> answer will earn you <span className="text-red-600 underline">points</span>.</li>
-            <li className="mb-2">
+            <li className="mb-4">Each <span className="text-red-600 underline">correct</span> answer will earn you <span className="text-red-600 underline">points</span>.</li>
+            <li className="mb-4">
               The Trivia page has <span className="text-red-600 underline">Timer</span> that will start as soon as the Trivia starts and will stop when the Trivia ends.
             </li>
-        <li className="mb-2">
+        <li className="mb-4">
           The final page will display the <span className="text-red-600 underline">participant's name, score, and time taken </span>to complete the Trivia.
         </li>
         <li className="mb-2">
@@ -72,6 +74,9 @@ const Homepage = () => {
           {/* Content for the "Lorem Ipsum" column */}
         </div>
       </div>
+    </div>
+    
+    </div>
     </div>
   );
 };

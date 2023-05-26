@@ -12,6 +12,7 @@ const Trivia = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const name = searchParams.get("name");
+  
 
   const handleSubmit = async (event) => {
     event.preventDefault();
