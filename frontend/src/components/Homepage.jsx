@@ -16,21 +16,23 @@ const Homepage = () => {
       <h1 className="text-4xl text-center">TRIVIA APP HOMEPAGE</h1>
 
       <form onSubmit={handleSubmit} className="mt-4 text-center justify-center">
-        <input
-          type="text"
-          placeholder="Please Enter your name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          className="rounded-xl shadow-sm border border-blue-500 focus:border-indigo-300 focus:ring-indigo-300 focus:ring-offset-2 focus:outline-none py-2 px-5 mr-1 text-xl"
-        />
+  <input
+    type="text"
+    placeholder="Please Enter your name"
+    value={name}
+    onChange={(event) => setName(event.target.value)}
+    className="rounded-xl shadow-sm border border-blue-500 focus:border-indigo-300 focus:ring-indigo-300 focus:ring-offset-2 focus:outline-none py-2 px-5 mr-1 text-xl"
+  />
 
-        <button
-          type="submit"
-          className="mt-4 text-white bg-indigo-500 rounded-md shadow-sm py-2 px-4 text-xl"
-        >
-          Submit
-        </button>
-      </form>
+  <button
+    type="submit"
+    disabled={!name || !/^.{1,}$/.test(name)} // Added regex condition
+    className="mt-4 text-white bg-indigo-500 rounded-md shadow-sm py-2 px-4 text-xl"
+  >
+    Submit
+  </button>
+</form>
+
 
       <div className="mt-10 flex flex-wrap">
         <div className="w-full lg:w-1/3">
