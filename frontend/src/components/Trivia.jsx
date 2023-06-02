@@ -54,7 +54,7 @@ const Trivia = () => {
   useEffect(() => {
     const fetchQuestions = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URI}/api/questions/questions`);
+        const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URI}/api/questions/questions/onlyten`);
         const data = await response.json();
         setQuestions(data);
       } catch (error) {
